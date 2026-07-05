@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OSRS Companion — Offline Quest Hub</title>
+  <meta name="theme-color" content="#3b2a18" />
+  <meta name="description" content="Offline-first OSRS quest tracker and companion app." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="coin">✦</div><div><h1>OSRS Companion</h1><p>Offline quest hub</p></div></div>
+      <nav>
+        <button class="tab active" data-view="dashboard">Dashboard</button>
+        <button class="tab" data-view="quests">Quest Log</button>
+        <button class="tab" data-view="skills">Skill Planner</button>
+        <button class="tab" data-view="items">Item Checklist</button>
+        <button class="tab" data-view="diaries">Diaries</button>
+        <button class="tab" data-view="timers">Timers</button>
+        <button class="tab" data-view="calc">Calculators</button>
+        <button class="tab" data-view="tools">Tools</button>
+        <button class="tab" data-view="notes">Notes</button>
+        <button class="tab" data-view="datapack">Data Pack</button>
+        <button class="tab" data-view="settings">Save / Import</button>
+      </nav>
+      <div class="attribution">Local data pack • Progress saves in your browser.</div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div><h2 id="viewTitle">Dashboard</h2><p id="viewSubtitle">Your one-stop OSRS planning table.</p></div>
+        <div class="top-actions"><input id="globalSearch" placeholder="Search quests, items, rewards…" /><button id="quickComplete">Mark selected complete</button></div>
+      </header>
+      <section id="content"></section>
+    </main>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(console.warn);
+      });
+    }
+  </script>
+</body>
+</html>
